@@ -110,10 +110,11 @@ informacion_empresa, informacion_precios, noticias, Portafolio = st.tabs(["¿De 
 with informacion_empresa:
       if 'longBusinessSummary' in tickerData.info:
           resumen_empresa = tickerData.info['longBusinessSummary']
+          resumen_traducido =  translator.translate(resumen_empresa, src='en', dest='es')
+          st.info(resumen_traducido.text)
       else:
-          resumen_empresa = "Información no disponible"
-      resumen_traducido =  translator.translate(resumen_empresa, src='en', dest='es')
-      st.info(resumen_traducido.text)
+        resumen_empresa = "Información no disponible"
+        st.info(resumen_empresa.text)
 
 with informacion_precios:
       st.header("Movimiento de Precios de la Acción")
