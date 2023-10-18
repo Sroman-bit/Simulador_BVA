@@ -114,7 +114,7 @@ with informacion_empresa:
           st.info(resumen_traducido.text)
       else:
         resumen_empresa = "Información no disponible"
-        st.info(resumen_empresa.text)
+        st.info(resumen_empresa)
 
 with informacion_precios:
       st.header("Movimiento de Precios de la Acción")
