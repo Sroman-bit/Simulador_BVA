@@ -108,7 +108,10 @@ user = User(monto)
 informacion_empresa, informacion_precios, noticias, Portafolio = st.tabs(["¿De que trata la Empresa?", "Datos de precios", "Top 10 noticias", "Portafolio Personal"])
 
 with informacion_empresa:
-      resumen_empresa = tickerData.info['longBusinessSummary']
+      if 'longBusinessSummary' in tickerData.info:
+          resumen_empresa = tickerData.info['longBusinessSummary']
+      else:
+          resumen_empresa = "Actualmente esta información no se encuentra disponible"
       resumen_traducido =  translator.translate(resumen_empresa, src='en', dest='es')
       st.info(resumen_traducido.text)
 
