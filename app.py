@@ -111,7 +111,7 @@ with informacion_empresa:
       if 'longBusinessSummary' in tickerData.info:
           resumen_empresa = tickerData.info['longBusinessSummary']
       else:
-          resumen_empresa = "Actualmente esta información no se encuentra disponible"
+          resumen_empresa = "Información no disponible"
       resumen_traducido =  translator.translate(resumen_empresa, src='en', dest='es')
       st.info(resumen_traducido.text)
 
