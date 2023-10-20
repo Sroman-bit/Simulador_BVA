@@ -9,9 +9,9 @@ from googletrans import Translator
 translator = Translator()
 import time
 import random
-#Codigo Principal
 
-st.set_page_config( page_title = "Simulador BVA")
+#Codigo Principal
+st.set_page_config( page_title = "Simulador BVA 🧡💙")
 ticker_list = pd.read_csv('https://raw.githubusercontent.com/dataprofessor/s-and-p-500-companies/master/data/constituents_symbols.txt')
 ticker = st.sidebar.selectbox('Stock ticker', ticker_list) # Select ticker symbol
 fecha_predeterminada = datetime(2020, 10, 10)
