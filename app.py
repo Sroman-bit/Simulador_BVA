@@ -127,7 +127,7 @@ with informacion_precios:
       st.write("Volume: Número total de acciones vendidas en el mercado durante un determinado día. Es un indicador crucial de la actividad del mercado y puede mostrar la fuerza y ​​dirección del movimiento del precio de una acción")
 
 with noticias:
-    st.header(f"Noticias de {ticker}")
+    st.header(f"Noticias de {nombre_empresa}")
     sn = sn.StockNews(ticker, save_news = False)
     df_noticias = sn.read_rss()
     for i in range(10):
