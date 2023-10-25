@@ -6,4 +6,3 @@ pandas==1.5.3
 numpy==1.23.5
 streamlit==1.27.2
 plotly==5.15.0
-streamlit-authenticator==0.2.3
