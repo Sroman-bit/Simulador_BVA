@@ -24,7 +24,7 @@ texto = 'El precio actual de esta acción es '
 tickerData = yf.Ticker(ticker)
 
 data = yf.download(ticker, start = Fecha_Inicio , end = Fecha_Fin )
-fig = px.line(data, x = data.index, y = data['Adj Close'], title = nombre_empresa)
+fig = px.line(data, x = data.index, y = data['Close'], title = nombre_empresa)
 st.plotly_chart(fig)
 status_text = st.empty()
 
