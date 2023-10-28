@@ -1,17 +1,16 @@
 
-#Librerias a Importar
-
 import streamlit as st, pandas as pd, numpy as np, yfinance as yf
 import plotly.express as px
 from datetime import datetime
 import stocknews as sn
 from googletrans import Translator
+
 translator = Translator()
 import time
 import random
-
 #Codigo Principal
-st.set_page_config( page_title = "Simulador BVA 🧡💙")
+
+st.set_page_config( page_title = "Simulador BVA")
 ticker_list = pd.read_csv('https://raw.githubusercontent.com/dataprofessor/s-and-p-500-companies/master/data/constituents_symbols.txt')
 ticker = st.sidebar.selectbox('Stock ticker', ticker_list) # Select ticker symbol
 fecha_predeterminada = datetime(2020, 10, 10)
@@ -22,9 +21,9 @@ texto = 'El precio actual de esta acción es '
 
 #Grafico del movimiento de precios de la accion
 tickerData = yf.Ticker(ticker)
-
+nombre_empresa = tickerData.info['longName']
 data = yf.download(ticker, start = Fecha_Inicio , end = Fecha_Fin )
-fig = px.line(data, x = data.index, y = data['Close'], title = nombre_empresa)
+fig = px.line(data, x = data.index, y = data['Adj Close'], title = nombre_empresa)
 st.plotly_chart(fig)
 status_text = st.empty()
 
@@ -110,11 +109,12 @@ informacion_empresa, informacion_precios, noticias, Portafolio = st.tabs(["¿De 
 with informacion_empresa:
       if 'longBusinessSummary' in tickerData.info:
           resumen_empresa = tickerData.info['longBusinessSummary']
-          resumen_traducido =  translator.translate(resumen_empresa, src='en', dest='es')
-          st.info(resumen_traducido.text)
       else:
-        resumen_empresa = "Información no disponible"
-        st.info(resumen_empresa)
+          Disponibilidad = 1
+          resumen_empresa = "Información no disponible"
+
+      resumen_traducido =  translator.translate(resumen_empresa, src='en', dest='es')
+      st.info(resumen_traducido.text)
 
 with informacion_precios:
       st.header("Movimiento de Precios de la Acción")
@@ -127,7 +127,8 @@ with informacion_precios:
       st.write("Volume: Número total de acciones vendidas en el mercado durante un determinado día. Es un indicador crucial de la actividad del mercado y puede mostrar la fuerza y ​​dirección del movimiento del precio de una acción")
 
 with noticias:
-    st.header(f"Noticias de {nombre_empresa}")
+    st.header(f"Noticias de {ticker}")
+
     sn = sn.StockNews(ticker, save_news = False)
     df_noticias = sn.read_rss()
     for i in range(10):
@@ -170,8 +171,6 @@ with Portafolio:
         portfolio_info = user.portfolio.get_portfolio_info()
         for ticker, Cantidad in portfolio_info:
           st.text(f"ticker: {ticker}, Cantidad: {Cantidad}")
-
-
 
 
 
