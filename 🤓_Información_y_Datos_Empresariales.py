@@ -1,3 +1,4 @@
+#Librerias a Importar
 
 import streamlit as st, pandas as pd, numpy as np, yfinance as yf
 import plotly.express as px
@@ -171,6 +172,8 @@ with Portafolio:
         portfolio_info = user.portfolio.get_portfolio_info()
         for ticker, Cantidad in portfolio_info:
           st.text(f"ticker: {ticker}, Cantidad: {Cantidad}")
+
+
 
 
 
