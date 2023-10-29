@@ -104,7 +104,7 @@ def conseguir_precio_actual(ticker):
 
 user = User(monto)
 
-informacion_precios, noticias, Portafolio = st.tabs(["¿De que trata la Empresa?", "Datos de precios", "Top 10 noticias", "Portafolio Personal"])
+informacion_precios, noticias, Portafolio = st.tabs(["Datos de precios", "Top 10 noticias", "Portafolio Personal"])
 
 with informacion_precios:
       st.header("Movimiento de Precios de la Acción")
