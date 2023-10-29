@@ -22,7 +22,7 @@ texto = 'El precio actual de esta acción es '
 
 #Grafico del movimiento de precios de la accion
 tickerData = yf.Ticker(ticker)
-nombre_empresa = tickerData.info['longName']
+nombre_empresa = ticker
 data = yf.download(ticker, start = Fecha_Inicio , end = Fecha_Fin )
 fig = px.line(data, x = data.index, y = data['Adj Close'], title = nombre_empresa)
 st.plotly_chart(fig)
