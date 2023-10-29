@@ -104,18 +104,7 @@ def conseguir_precio_actual(ticker):
 
 user = User(monto)
 
-
-informacion_empresa, informacion_precios, noticias, Portafolio = st.tabs(["¿De que trata la Empresa?", "Datos de precios", "Top 10 noticias", "Portafolio Personal"])
-
-with informacion_empresa:
-      if 'longBusinessSummary' in tickerData.info:
-          resumen_empresa = tickerData.info['longBusinessSummary']
-      else:
-          Disponibilidad = 1
-          resumen_empresa = "Information not available"
-
-      resumen_traducido =  translator.translate(resumen_empresa, src='en', dest='es')
-      st.info(resumen_traducido.text)
+informacion_precios, noticias, Portafolio = st.tabs(["¿De que trata la Empresa?", "Datos de precios", "Top 10 noticias", "Portafolio Personal"])
 
 with informacion_precios:
       st.header("Movimiento de Precios de la Acción")
