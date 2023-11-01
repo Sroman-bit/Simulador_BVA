@@ -9,7 +9,86 @@ from googletrans import Translator
 translator = Translator()
 import time
 import random
+
+#Funciones
+
+def conseguir_precio_actual(ticker):
+    data_actual = yf.Ticker(ticker).history(period='1y')
+    return {'': data_actual.iloc[-1].Close,}
+
+# Función para el inicio de sesión
+def login():
+    st.header("Iniciar Sesión")
+    correo = st.text_input("Correo Electrónico")
+    usuario = st.text_input("Usuario")
+    contrasena = st.text_input("Contraseña", type="password")
+    
+    if st.button("Iniciar Sesión"):
+        # Verificar si los campos están completos (puedes agregar más validaciones aquí)
+        if correo and usuario and contrasena:
+            # Realizar la validación del usuario y contraseña (puedes agregar tu propia lógica)
+            if validar_usuario(correo, usuario, contrasena):
+                st.success("Inicio de sesión exitoso")
+                # Llevar al usuario a la parte del simulador
+                mostrar_simulador()
+            else:
+                st.error("Credenciales incorrectas")
+        else:
+            st.warning("Por favor, completa todos los campos.")
+
+# Función para el registro
+def registro():
+    st.header("Registrarse")
+    correo = st.text_input("Correo Electrónico")
+    usuario = st.text_input("Usuario")
+    contrasena = st.text_input("Contraseña", type="password")
+    confirmar_contrasena = st.text_input("Confirmar Contraseña", type="password")
+    
+    if st.button("Registrarse"):
+        # Verificar si los campos están completos (puedes agregar más validaciones aquí)
+        if correo and usuario and contrasena and confirmar_contrasena:
+            # Verificar que las contraseñas coincidan
+            if contrasena == confirmar_contrasena:
+                # Realizar la lógica de registro (puedes agregar tu propia lógica)
+                registrar_usuario(correo, usuario, contrasena)
+                st.success("Registro exitoso")
+                # Llevar al usuario a la parte del simulador
+                mostrar_simulador()
+            else:
+                st.error("Las contraseñas no coinciden")
+        else:
+            st.warning("Por favor, completa todos los campos.")
+
+# Función para mostrar el simulador
+def mostrar_simulador():
+    st.write("¡Bienvenido al simulador!")
+    # Aquí puedes agregar la lógica y la interfaz del simulador
+
+# Simulación de la validación del usuario
+def validar_usuario(correo, usuario, contrasena):
+    # Aquí deberías agregar tu propia lógica de validación de usuario
+    # Puedes comparar las credenciales con las almacenadas en una base de datos o archivo
+    # En este ejemplo, solo se simula la validación
+    return True
+
+# Simulación del registro de usuario
+def registrar_usuario(correo, usuario, contrasena):
+    # Aquí deberías agregar tu propia lógica de registro de usuario
+    # Puedes almacenar las credenciales en una base de datos o archivo
+    # En este ejemplo, solo se simula el registro
+    pass
+
 #Codigo Principal
+
+st.title("Sistema de Validación de Usuario")
+
+# Página de inicio que permite al usuario seleccionar entre iniciar sesión y registrarse
+pagina_inicio = st.radio("Elija una opción:", ("Iniciar Sesión", "Registrarse"))
+
+if pagina_inicio == "Iniciar Sesión":
+    login()
+elif pagina_inicio == "Registrarse":
+    registro()
 
 st.set_page_config( page_title = "Simulador BVA")
 ticker_list = pd.read_csv('https://raw.githubusercontent.com/dataprofessor/s-and-p-500-companies/master/data/constituents_symbols.txt')
@@ -96,12 +175,6 @@ class User:
 
             self.invertido.append(dinero_asignado + self.invertido[-1])
 
-#Funciones
-
-def conseguir_precio_actual(ticker):
-    data_actual = yf.Ticker(ticker).history(period='1y')
-    return {'': data_actual.iloc[-1].Close,}
-
 user = User(monto)
 
 informacion_precios, noticias, Portafolio = st.tabs(["Datos de precios", "Top 10 noticias", "Portafolio Personal"])
@@ -161,11 +234,3 @@ with Portafolio:
         portfolio_info = user.portfolio.get_portfolio_info()
         for ticker, Cantidad in portfolio_info:
           st.text(f"ticker: {ticker}, Cantidad: {Cantidad}")
-
-
-
-
-
-
-
-
