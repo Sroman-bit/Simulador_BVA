@@ -22,3 +22,8 @@ st.write("El análisis técnico examina patrones y tendencias pasadas en gráfic
 st.write(" ")
 st.write(" ¿Cómo afecta la oferta y la demanda al precio de las acciones?")
 st.write("Si la demanda de una acción supera la oferta, el precio tiende a subir, y viceversa. La oferta y la demanda son fundamentales para determinar los precios en el mercado de valores.")
+st.write(" ")
+st.write(" CRÉDITOS")
+st.write("Líder de proyecto: Jesús Matías")
+st.write("Desarrollador backend: Alessandro Villanueva")
+st.write("Desarrollador frontend: Santiago Román")
