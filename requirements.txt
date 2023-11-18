@@ -6,3 +6,4 @@ pandas==1.5.3
 numpy==1.23.5
 streamlit==1.27.2
 plotly==5.15.0
+firebase-admin==5.2.1
