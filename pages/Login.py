@@ -49,11 +49,17 @@ def validar_usuario(correo, usuario, contrasena):
     # Cerrar la conexión a Firebase si ya está inicializada
     if firebase_admin._apps:
         firebase_admin.delete_app(firebase_admin.get_app())
-
+    
+    # Obtén la ruta del directorio actual
+    current_dir = os.path.dirname(os.path.realpath(__file__))
+    
+    # Construye la ruta al archivo de credenciales
+    credentials_path = os.path.join(current_dir, 'credentials', 'bolsadevaloresaneiap-5dc01e6a121d.json')
+    
     # Inicializar Firebase
-    cred = credentials.Certificate(r'C:\Users\avill\OneDrive\Escritorio\REPOSITORIO_BDVANEIAP\Simulador_BVA\bolsadevaloresaneiap-5dc01e6a121d.json')
-    firebase_admin.initialize_app(cred)
-
+    cred = credentials.Certificate(credentials_path)
+    initialize_app(cred)
+    
     # Obtener una referencia a la base de datos
     db = firestore.client()
 
