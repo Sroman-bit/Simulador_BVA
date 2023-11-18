@@ -8,10 +8,6 @@ from googletrans import Translator
 import streamlit as st
 import firebase_admin
 from firebase_admin import credentials, firestore
-import os
-import json
-from firebase_admin import credentials, initialize_app
-
 
 translator = Translator()
 import time
@@ -52,7 +48,7 @@ def registrar_usuario(correo, usuario, contrasena):
     # Cerrar la conexión a Firebase si ya está inicializada
     if firebase_admin._apps:
         firebase_admin.delete_app(firebase_admin.get_app())
-    
+
     # Contenido directo del diccionario de credenciales
     cred_dict = {
         "type": "service_account",
