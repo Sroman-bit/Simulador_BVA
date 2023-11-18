@@ -9,7 +9,9 @@ import streamlit as st
 import firebase_admin
 from firebase_admin import credentials, firestore
 import os
+import json
 from firebase_admin import credentials, initialize_app
+
 
 translator = Translator()
 import time
@@ -51,15 +53,28 @@ def registrar_usuario(correo, usuario, contrasena):
     if firebase_admin._apps:
         firebase_admin.delete_app(firebase_admin.get_app())
     
-    # Obtén la ruta del directorio actual
-    current_dir = os.path.dirname(os.path.realpath(__file__))
+    # Aquí colocas el contenido directo del archivo JSON como una cadena
+    json_content = """
+    {
+      "type": "service_account",
+      "project_id": "tu-proyecto-id",
+      "private_key_id": "tu-private-key-id",
+      "private_key": "-----BEGIN PRIVATE KEY-----\n...tu clave privada aquí...\n-----END PRIVATE KEY-----\n",
+      "client_email": "tu-client-email@tudominio.iam.gserviceaccount.com",
+      "client_id": "tu-client-id",
+      "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+      "token_uri": "https://accounts.google.com/o/oauth2/token",
+      "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+      "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/tu-client-email@tudominio.iam.gserviceaccount.com"
+    }
+    """
     
-    # Construye la ruta al archivo de credenciales
-    credentials_path = os.path.join(current_dir, 'credentials', 'bolsadevaloresaneiap-5dc01e6a121d.json')
+    # Carga el contenido JSON como un diccionario
+    cred_dict = json.loads(json_content)
     
-    # Inicializar Firebase
-    cred = credentials.Certificate(credentials_path)
-    initialize_app(cred)
+    # Inicializa Firebase utilizando el diccionario
+    cred = credentials.Certificate(cred_dict)
+    firebase_admin.initialize_app(cred)
     
     # Obtener una referencia a la base de datos
     db = firestore.client()
