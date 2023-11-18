@@ -419,4 +419,4 @@ with Portafolio:
                 st.warning("No tienes suficientes acciones para realizar esta venta.")
         except Exception as e:
             # Manejar la excepción específica (puedes personalizar esto según el tipo de excepción que se produzca)
-            st.warning("Error al procesar la compra. Por favor, inicie sesión para realizar transacciones.")
+            st.warning("Error al procesar la venta. Por favor, inicie sesión para realizar transacciones.")
