@@ -7,3 +7,5 @@ numpy==1.23.5
 streamlit==1.27.2
 plotly==5.15.0
 firebase_admin==6.2.0
+jsonschema==4.19.2
+jsonschema-specifications==2023.7.1
