@@ -5,12 +5,31 @@ import plotly.express as px
 from datetime import datetime
 import stocknews as sn
 from googletrans import Translator
+import streamlit as st
+import firebase_admin
+from firebase_admin import credentials, firestore
 
 translator = Translator()
 import time
 import random
 
 #Funciones
+
+from pages import Login  # Importa el archivo login.py
+
+# Obtener el valor de usuario_autenticado desde login.py
+usuario_autenticado = Login.usuario_autenticado
+
+# Cerrar la conexión a Firebase si ya está inicializada
+if firebase_admin._apps:
+    firebase_admin.delete_app(firebase_admin.get_app())
+
+# Inicializar Firebase
+cred = credentials.Certificate(r'C:\Users\avill\OneDrive\Escritorio\REPOSITORIO_BDVANEIAP\Simulador_BVA\bolsadevaloresaneiap-5dc01e6a121d.json')
+firebase_admin.initialize_app(cred)
+
+# Obtener una referencia a la base de datos
+db = firestore.client()
 
 def conseguir_precio_actual(ticker):
     data_actual = yf.Ticker(ticker).history(period='1y')
