@@ -234,8 +234,13 @@ with Portafolio:
     db = firestore.client()
     
     # Obtener el portafolio actual del usuario y mostrarlo en la aplicación
-    portafolio_actual = db.collection("usuarios").document(usuario_logueado).get().to_dict().get("Portafolio", [])
-    st.write(portafolio_actual)
+    try:
+        # Obtener el portafolio actual del usuario y mostrarlo en la aplicación
+        portafolio_actual = db.collection("usuarios").document(usuario_logueado).get().to_dict().get("Portafolio", [])
+        st.write(portafolio_actual)
+    except Exception as e:
+        # Manejar la excepción específica (puedes personalizar esto según el tipo de excepción que se produzca)
+        st.warning("PARA ACCEDER A LAS FUNCIONES DEL PORTAFOLIO COMPLETAS SIN ERRORES DEBES PRIMERO LOGUEARTE, VE A LOGIN E INGRESA TU USUARIO.")
 
     precio = conseguir_precio_actual(ticker)
     precio_actual = round(precio[''], 4) * random.uniform(0.995, 1.005)
