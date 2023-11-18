@@ -82,7 +82,6 @@ def obtener_saldo_usuario(usuario):
     doc_usuario = doc_ref_usuario.get()
 
     return doc_usuario.get("Saldo")
-    print(doc_usuario.get("Saldo"))
 
 def conseguir_precio_actual(ticker):
     data_actual = yf.Ticker(ticker).history(period='1y')
@@ -232,7 +231,6 @@ with Portafolio:
     
     # Obtener una referencia a la base de datos
     db = firestore.client()
-    
     # Obtener el portafolio actual del usuario y mostrarlo en la aplicación
     try:
         # Obtener el portafolio actual del usuario y mostrarlo en la aplicación
@@ -251,45 +249,30 @@ with Portafolio:
             # Cerrar la conexión a Firebase si ya está inicializada
             if firebase_admin._apps:
                 firebase_admin.delete_app(firebase_admin.get_app())
-    
-            # Contenido directo del diccionario de credenciales
-            cred_dict = {
-                "type": "service_account",
-                "project_id": "bolsadevaloresaneiap",
-                "private_key_id": "5dc01e6a121dec2c4f7c86ea98df53559d9b1329",
-                "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCrw//eHxkwAvl/\n/jBDuKp31kXbVthHXfjChLLZMxYiIYUGowpBLpYk3f1XnIfPBB9A0Tv56LBtREdu\n1qmxlPmjd7AEPM4ivfnq1XGgj/YRac8hhJOSpN5nKmq7Vy++jZ/NM2D/6L6ZVY5m\nsIUDGOr1Xu5Ehh7rcxwbhOWSuz3H6wGRjEe5rQq1vLEYRBZx7uMK/ASgTwMPrcjb\n66T41MscT1WIF+UIEVhEu/8GsU95HpED19a7/nOdYLicm59JuJ0vwWl4pc5Vh03l\n8h9CevNs5TI61OYc5oy/DjTIltj6KSc5rsyRQxqgVpwSZL+qgsNSSud8IN2ex+1O\nBO/Qr/SlAgMBAAECggEAEC/ITQZhOUUOfiFWKwucBO8MZj8o4pDYgHxA3ncR/uVp\nw9ZZgQsC2zaQSVFW+wtIZrNRE5v6BFIK6UcRdsqzO9RrofqY8m00wAydSKRIbBus\niVwVDBy9WLuGk2ED/tEZ3hyZZ4Rnccu+P68i2cffXIA1s/9vqoCOhYlgmRNMHyq+\n0ITr7DRdYvd5HSAm6Qn1uT1o78BI/A5uKJAjoPgyJ+CPv8lv658SidZKUGQMPZy3\nOf1yjvjSXpKd+5FaOtRBiELmOM5yqhSRF6K/1tm698vkjN98WFK/7AAiTeQMTh1l\nRkV5egtgdrLtNNAq5szZFMv4ZM9bdUqwmwEEITk8AQKBgQDYP7+IVK6ZoPYY7nXx\nNAJFwM3YUPWlOLT+z+4dCzc1LYvX+xZSJkVg0GQYtV1KODX6hNHS7BYMfm+fXA0O\n986XlNgP4pky+6bvbYGkklag9oyoZHGS1Ump7jnUIofzzcboXnMn5Y+1SE+9P5Qp\nL+TtQBglUfqkS0yN6lmnIMERvQKBgQDLVvNch3gTQ6mTVIete5Ekc9U2YDXarOHR\nDWMpCvhQ9J6yl+Zk6SJCsP4xpZ/EMJ7FTmpNk786YQ5sOp2Ty1hEF2lprmUAeBWg\nSTEqCpr2NmSgr8Eej/DFr6qqWNy7TSRtIRaDh6+k7Rvua3ZnGiEoPcLKwQpbntVT\nNyqoGNR5CQKBgGFA+kCz5PpOu58mz4A05bi9J1Zbwr4VrMDUfsAtJR0TaMsvrzAu\n6hDKZ9n85wHUGeKbDUqQxrHDwyumWHEc3ZqqZClwvXmCV+diFmYPMkqd11B8K9/f\ncIuuCe/vv7jUGNq0b5HH2kOrS8FO8LE9SvWwV6uhHNn6y2kftkZFos75AoGBAMc9\ns8f+lZGKwyYxtaAva9CkD07whtR2ge4th/Q3Y4kvqDCm1oIaTg+7DdfnydybJ3d9\nlnvdQYsaft9dr/mZTiuqJQgAccc74zTjguEG80A9m+w3Sqt/rxSFRF0WJXMB66di\nvIS0905LZwr/EU2FNOgRXET/Uf7ka3LWo12Ctu7BAoGAXHonxlrNK7S+PVQ7sJR7\nYjvpJkhleJ5J2SJgk6drI1+DawXem7b0m8Uwxn7OE5WDxvdfcJpGMmy71Cxvyez0\n2v9rNaZny6fs9/J0PE+ZpDE+hEZ71G8tc+GcZ4Pbz7zuP6vJPFxa4w2u/nHZmsq7hZD1fQDqFKDiC/yTlCSeCrI=\n-----END PRIVATE KEY-----\n",
-                "client_email": "firebase-adminsdk-ny0mg@bolsadevaloresaneiap.iam.gserviceaccount.com",
-                "client_id": "118092414323030631083",
-                "auth_uri": "https://accounts.google.com/o/oauth2/auth",
-                "token_uri": "https://oauth2.googleapis.com/token",
-                "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
-                "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-ny0mg%40bolsadevaloresaneiap.iam.gserviceaccount.com",
-                "universe_domain": "googleapis.com"
-            }
-        
-            # Inicializa Firebase utilizando el diccionario
-            cred = credentials.Certificate(cred_dict)
+
+            # Inicializar Firebase
+            cred = credentials.Certificate(r'C:\Users\avill\OneDrive\Escritorio\REPOSITORIO_BDVANEIAP\Simulador_BVA\bolsadevaloresaneiap-5dc01e6a121d.json')
             firebase_admin.initialize_app(cred)
-            
+
             # Obtener una referencia a la base de datos
             db = firestore.client()
-    
+
             # Obtener el saldo del usuario
             saldo_usuario = obtener_saldo_usuario(usuario_logueado)
-    
+
             # Calcular el costo total de las acciones
             costo_total = Cantidad * precio_actual
-    
+
             # Verificar si el usuario tiene suficiente saldo
             if saldo_usuario is not None and saldo_usuario >= costo_total:
-    
+
                 # Actualizar el saldo del usuario en la base de datos
                 nuevo_saldo = saldo_usuario - costo_total
                 db.collection("usuarios").document(usuario_logueado).update({"Saldo": nuevo_saldo})
-    
+
                 # Obtener la fecha actual
                 fecha_actual = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    
+
                 # Obtener el portafolio actual del usuario
                 portafolio_actual = db.collection("usuarios").document(usuario_logueado).get().to_dict().get("Portafolio", [])
                 # Verificar si el usuario ya tiene acciones de ese ticker en su portafolio
@@ -310,7 +293,7 @@ with Portafolio:
                     db.collection("usuarios").document(usuario_logueado).update({
                         "Portafolio": firestore.ArrayUnion([nueva_accion])
                     })
-    
+
                 # Actualizar el historial de transacciones del usuario
                 historial_transacciones = {
                     "Ticker": ticker,
@@ -320,12 +303,12 @@ with Portafolio:
                     "Nuevo Saldo": nuevo_saldo,
                     "Fecha": fecha_actual
                 }
-    
+
                 # Añadir el historial de transacciones al usuario
                 db.collection("usuarios").document(usuario_logueado).update({
                     "HistorialTransacciones": firestore.ArrayUnion([historial_transacciones])
                 })
-    
+
                 # Actualizar la interfaz de usuario
                 st.success(f"Compra exitosa: {Cantidad} acciones de {ticker} por un total de {costo_total}. Saldo restante: {nuevo_saldo}")
             else:
@@ -339,7 +322,7 @@ with Portafolio:
             # Cerrar la conexión a Firebase si ya está inicializada
             if firebase_admin._apps:
                 firebase_admin.delete_app(firebase_admin.get_app())
-    
+
             # Contenido directo del diccionario de credenciales
             cred_dict = {
                 "type": "service_account",
@@ -354,36 +337,36 @@ with Portafolio:
                 "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-ny0mg%40bolsadevaloresaneiap.iam.gserviceaccount.com",
                 "universe_domain": "googleapis.com"
             }
-        
+
             # Inicializa Firebase utilizando el diccionario
             cred = credentials.Certificate(cred_dict)
             firebase_admin.initialize_app(cred)
             
             # Obtener una referencia a la base de datos
             db = firestore.client()
-    
+
             # Obtener el saldo del usuario
             saldo_usuario = obtener_saldo_usuario(usuario_logueado)
-    
+
             # Obtener el portafolio actual del usuario
             portafolio_actual = db.collection("usuarios").document(usuario_logueado).get().to_dict().get("Portafolio", [])
-    
+
             # Buscar el stock a vender en el portafolio del usuario
             stock_a_vender = next((stock for stock in portafolio_actual if stock["Ticker"] == ticker), None)
-    
+
             # Verificar si el usuario tiene suficientes acciones para vender
             if stock_a_vender is not None and stock_a_vender["Cantidad"] >= Cantidad:
-    
+
                 # Calcular el monto total de la venta
                 monto_venta = Cantidad * precio_actual
-    
+
                 # Actualizar el saldo del usuario en la base de datos (aumentar)
                 nuevo_saldo = saldo_usuario + monto_venta
                 db.collection("usuarios").document(usuario_logueado).update({"Saldo": nuevo_saldo})
-    
+
                 # Obtener la fecha actual
                 fecha_actual = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    
+
                 # Actualizar el historial de transacciones del usuario (añadiendo la venta)
                 historial_transacciones = {
                     "Ticker": ticker,
@@ -393,7 +376,6 @@ with Portafolio:
                     "Nuevo Saldo": nuevo_saldo,
                     "Fecha": fecha_actual
                 }
-                st.write(stock_a_vender)
                 # Verificar si se vende la totalidad del stock
                 if stock_a_vender["Cantidad"] == Cantidad:
                     # Eliminar la acción vendida del portafolio del usuario
@@ -401,7 +383,6 @@ with Portafolio:
                         "HistorialTransacciones": firestore.ArrayUnion([historial_transacciones]),
                         "Portafolio": firestore.ArrayRemove([stock_a_vender])
                     })
-                    st.write("cumplió")
                 else:
                     # Actualizar la cantidad de acciones en el portafolio del usuario
                     stock_a_vender["Cantidad"] -= Cantidad
@@ -412,11 +393,11 @@ with Portafolio:
                         "HistorialTransacciones": firestore.ArrayUnion([historial_transacciones]),
                         "Portafolio": nuevo_portafolio
                     })
-    
+
                 # Actualizar la interfaz de usuario
                 st.success(f"Venta exitosa: {Cantidad} acciones de {ticker} por un total de {Cantidad * precio_actual}. Nuevo saldo: {nuevo_saldo}")
             else:
                 st.warning("No tienes suficientes acciones para realizar esta venta.")
         except Exception as e:
             # Manejar la excepción específica (puedes personalizar esto según el tipo de excepción que se produzca)
-            st.warning("Error al procesar la venta. Por favor, inicie sesión para realizar transacciones.")
+            st.warning("Error al procesar la compra. Por favor, inicie sesión para realizar transacciones.")
