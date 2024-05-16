@@ -37,6 +37,15 @@ def login():
                 st.error("USUARIO NO ENCONTRADO: Este usuario no existe, primero debes registrarte para ello.")
         else:
             st.warning("Por favor, completa todos los campos.")
+        
+        """Función que permite el inicio de sesión de los usuarios dentro de la bolsa de valores
+
+        Args:
+
+        
+        """
+
+        
 
 # Simulación de la validación del usuario
 def validar_usuario(correo, usuario, contrasena):
