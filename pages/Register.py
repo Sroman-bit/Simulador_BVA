@@ -42,15 +42,15 @@ def registro():
         else:
             st.warning("DEBES DILIGENCIAR TODOS LOS CAMPOS.")
     """
-    Registra un nuevo usuario en el sistema, permitiendo que diligencie correo, usuario y contraseña, y verificando que 
-    se diligenciaron estos datos correctamente por parte del usuario.
+    Permite que el usuario diligencie correo, usuario y contraseña, y verificando que 
+    se diligenciaron estos datos correctamente.
 
     Args:
         correo (str): Correo electrónico del usuario.
         usuario (str): Nombre de usuario.
         contrasena (str): Contraseña del usuario.
-        confirmar_contrasena (str): Confirmación de contraseña del usuario
-        registro_exitoso (bool): Variable para rastrear que el registro fue exitoso
+        confirmar_contrasena (str): Confirmación de contraseña del usuario.
+        registro_exitoso (bool): Variable para rastrear que el registro fue exitoso.
 
     Returns:
         warning(str):"DEBES DILIGENCIAR TODOS LOS CAMPOS."
@@ -130,6 +130,27 @@ def registrar_usuario(correo, usuario, contrasena):
     confirmar_contrasena = ""
 
     return True  # Indicar que el registro fue exitoso
+
+    """
+    Registra un nuevo usuario dentro de la base de datos de Firebase y permite la confirmacion
+    registro exitoso.
+
+    Args:
+        cred_dict (dict): Diccionario que contiene las credenciales necesarias para ingresar a la base de datos de Firebase.
+        cred (certificate): Toma el diccionario con las credenciales y lo convierte en un objeto de tipo certificate para poder autenticarse en los servidores de Firebase.
+        db (object): Inicializa una instancia en el cliente de Firebase para usar sus metodos y funciones, similar a importar una libreria en su funcionamiento.
+        datos_usuario (dict): Diccionario que contiene los datos del usuario para guardarlo en Firebase.
+        correo (str): Restablece el campo de entrada de correo.
+        usuario (str): Restablece el campo de entrada de usuario.
+        contrasena (str): Restablece el campo de entrada de contraseña.
+        confirmar_contrasena (str): Restablece el campo de entrada de confirmar contraseña.
+        
+
+    Returns:
+
+    bool: True para indicar que el registro fue exitoso dentro de la funcion registro()
+    
+    """
 
 
 #Codigo Principal
