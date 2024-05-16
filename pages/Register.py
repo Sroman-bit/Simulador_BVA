@@ -41,9 +41,10 @@ def registro():
                 st.error("LAS CONSTRASEÑAS NO COINCIDEN.")
         else:
             st.warning("DEBES DILIGENCIAR TODOS LOS CAMPOS.")
-    """
-    Permite que el usuario diligencie correo, usuario y contraseña, y verificando que 
-    se diligenciaron estos datos correctamente.
+            
+    """Permite que el usuario diligencie correo, usuario y contraseña, y verificando que 
+    se diligenciaron estos datos correctamente, construyendo una interfaz web por medio
+    de la libreria Streamlit.
 
     Args:
         correo (str): Correo electrónico del usuario.
@@ -53,6 +54,7 @@ def registro():
         registro_exitoso (bool): Variable para rastrear que el registro fue exitoso.
 
     Returns:
+    Hace aparecer mensajes de acuerdo al resultado del registro.
         warning(str):"DEBES DILIGENCIAR TODOS LOS CAMPOS."
         error(str): "LAS CONSTRASEÑAS NO COINCIDEN."
         success(str): "Usuario registrado exitosamente".
@@ -131,8 +133,7 @@ def registrar_usuario(correo, usuario, contrasena):
 
     return True  # Indicar que el registro fue exitoso
 
-    """
-    Registra un nuevo usuario dentro de la base de datos de Firebase y permite la confirmacion
+    """Registra un nuevo usuario dentro de la base de datos de Firebase y permite la confirmacion
     registro exitoso.
 
     Args:
@@ -159,3 +160,7 @@ def registrar_usuario(correo, usuario, contrasena):
 if __name__ == '__main__':
     st.title("Sistema de Registro de Usuario")
     registro()
+
+    """Modulo del codigo que permite la creación de una pagina de registro
+       por medio de la libreria Streamlit.
+    """
