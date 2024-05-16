@@ -41,6 +41,23 @@ def registro():
                 st.error("LAS CONSTRASEÑAS NO COINCIDEN.")
         else:
             st.warning("DEBES DILIGENCIAR TODOS LOS CAMPOS.")
+    """
+    Registra un nuevo usuario en el sistema, permitiendo que diligencie correo, usuario y contraseña, y verificando que 
+    se diligenciaron estos datos correctamente por parte del usuario.
+
+    Args:
+        correo (str): Correo electrónico del usuario.
+        usuario (str): Nombre de usuario.
+        contrasena (str): Contraseña del usuario.
+        confirmar_contrasena (str): Confirmación de contraseña del usuario
+        registro_exitoso (bool): Variable para rastrear que el registro fue exitoso
+
+    Returns:
+        warning(str):"DEBES DILIGENCIAR TODOS LOS CAMPOS."
+        error(str): "LAS CONSTRASEÑAS NO COINCIDEN."
+        success(str): "Usuario registrado exitosamente".
+        write(str): "¡Bienvenido al simulador!"
+    """
 
 # Simulación del registro de usuario
 def registrar_usuario(correo, usuario, contrasena):
