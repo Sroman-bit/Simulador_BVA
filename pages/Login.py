@@ -38,15 +38,21 @@ def login():
         else:
             st.warning("Por favor, completa todos los campos.")
         
-        """Función que permite el inicio de sesión de los usuarios dentro de la bolsa de valores
+        """Función que permite el inicio de sesión de los usuarios dentro de la bolsa de valores.
 
         Args:
-
-        
+            correo (str): Correo electronico del usuario registrado en la base de datos.
+            usuario (str): Usuario del usuario registrado en la base de datos.
+            contrasena (str): Contraseña del usuario registrado en la base de datos.
+            
+        Returns:
+            Regresa mensaje de acuerdo al resultado de validación de inicio de sesión de la función validar_usuario().
+            st.success("¡Inicio de sesión exitoso! Ahora puedes acceder a todas las funciones del simulador.")
+            st.error("Credenciales incorrectas, verifica los datos y vuelve a escribirlos correctamente.")
+            st.warning("Por favor, completa todos los campos.")
         """
 
         
-
 # Simulación de la validación del usuario
 def validar_usuario(correo, usuario, contrasena):
 
@@ -96,6 +102,22 @@ def validar_usuario(correo, usuario, contrasena):
             return "Credenciales incorrectas"  # Contraseña incorrecta
     else:
         return "Usuario no encontrado"  # Usuario no existe en Firebase
+
+        """Función que permite la validación de que el usuario se encuentra previamente registrado en el sistema.
+
+        Args:
+            correo (str): Correo electronico del usuario registrado en la base de datos.
+            usuario (str): Usuario del usuario registrado en la base de datos.
+            contrasena (str): Contraseña del usuario registrado en la base de datos.
+            
+        Returns:
+            Regresa mensaje de acuerdo al resultado de validación de inicio de sesión de la función validar_usuario().
+            st.success("¡Inicio de sesión exitoso! Ahora puedes acceder a todas las funciones del simulador.")
+            st.error("Credenciales incorrectas, verifica los datos y vuelve a escribirlos correctamente.")
+            st.warning("Por favor, completa todos los campos.")
+        """
+
+
 
 #Codigo Principal
 
