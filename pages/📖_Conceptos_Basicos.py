@@ -28,3 +28,6 @@ st.write(" CRÉDITOS DEL SIMULADOR")
 st.write("Líder de proyecto: Jesús García - 3103963783")
 st.write("Desarrollador backend: Alessandro Villanueva - 3002252099")
 st.write("Desarrollador frontend: Santiago Román - 3154070811")
+
+"""Pagina web construida con la libreria de Python Streamlit que contiene conceptos basicos de bolsa de valores y creditos.
+"""
