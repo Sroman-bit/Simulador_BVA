@@ -106,15 +106,19 @@ def validar_usuario(correo, usuario, contrasena):
         """Función que permite la validación de que el usuario se encuentra previamente registrado en el sistema.
 
         Args:
-            correo (str): Correo electronico del usuario registrado en la base de datos.
-            usuario (str): Usuario del usuario registrado en la base de datos.
-            contrasena (str): Contraseña del usuario registrado en la base de datos.
+            cred_dict (dict): Diccionario que contiene las credenciales necesarias para ingresar a la base de datos de Firebase.
+            cred (certificate): Toma el diccionario con las credenciales y lo convierte en un objeto de tipo certificate para poder autenticarse en los servidores de Firebase.
+            db (): Inicializa una instancia en el cliente de Firebase para usar sus metodos y funciones, similar a importar una libreria en su funcionamiento.
+            doc_ref (): Busca los datos del usuario dentro de la base de datos de Firebase.
+            datos_usuario (dict): Si existe el usuario, transforma el objeto doc_ref a tipo diccionario para su manejo.
+            doc_ref_variables (): Referencia al documento variables dentro de la base de datos de Firebase para actualizar el campo "usuario_logueado" con usuario.
+            
             
         Returns:
-            Regresa mensaje de acuerdo al resultado de validación de inicio de sesión de la función validar_usuario().
-            st.success("¡Inicio de sesión exitoso! Ahora puedes acceder a todas las funciones del simulador.")
-            st.error("Credenciales incorrectas, verifica los datos y vuelve a escribirlos correctamente.")
-            st.warning("Por favor, completa todos los campos.")
+            Retorna el resultado de la verificación del usuario dentro de la base de datos.
+            str: "Inicio de sesión exitoso".
+            str: "Credenciales incorrectas".
+            str: "Usuario no encontrado".
         """
 
 
@@ -125,3 +129,7 @@ if __name__ == '__main__':
 
     st.title("Sistema de Ingreso de Usuario")
     login()
+
+        """Modulo principal que permite tener una pagina de inicio de sesión dentro del simulador_BVA.
+        """
+
