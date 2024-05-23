@@ -130,6 +130,5 @@ if __name__ == '__main__':
     st.title("Sistema de Ingreso de Usuario")
     login()
 
-        """Modulo principal que permite tener una pagina de inicio de sesión dentro del simulador_BVA.
-        """
+        
 
